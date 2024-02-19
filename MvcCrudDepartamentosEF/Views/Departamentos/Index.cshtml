@@ -1,0 +1,37 @@
+﻿@model List<Departamento>
+
+<div class="container mt-5">
+    <h1>Departamentos</h1>
+    <hr />
+    <p>
+        <a asp-action="Create" asp-controller="Departamentos" class="btn btn-info">
+            Nuevo Departamento
+        </a>
+    </p>
+    <hr />
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id Departamento</th>
+                <th>Nombre</th>
+                <th>Localidad</th>
+                <th>-</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(Departamento dept in Model)
+            {
+                <tr>
+                    <td>@dept.idDepartamento</td>
+                    <td>@dept.Nombre</td>
+                    <td>@dept.Localidad</td>
+                    <td>
+                        @Html.ActionLink("Detalles", "Details", "Departamentos", new {idDepartamento = dept.idDepartamento}, new{@class = "btn btn-primary"})
+                        @Html.ActionLink("Modificar", "Modificar", "Departamentos", new {idDepartamento = dept.idDepartamento}, new{@class = "btn btn-warning"})
+                        @Html.ActionLink("Eliminar", "Delete", "Departamentos", new {idDepartamento = dept.idDepartamento}, new{@class = "btn btn-danger"})
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </tabl>
+</div>
